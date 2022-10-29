@@ -26,6 +26,21 @@ class AuthorController extends Controller
     }
 
     public function updateProject(Request $request){
-        dd($request->file());
+        $data = $request->all();
+
+        if ($file = $request->file('icon')) {
+
+            $now = time();
+
+            $filename = $now . $file->getClientOriginalName();
+            $file->storeAs('/', $filename, 'public_projects');
+
+            $data['icon'] = $now . $request['icon']->getClientOriginalName();
+        }
+
+        $project= Project::find($data['project_id']);
+        $project->update($data);
+
+        dd($project);
     }
 }

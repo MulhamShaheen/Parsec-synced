@@ -155,7 +155,7 @@
                 or drag and drop</p>
               <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
             </div>
-            <input id="icon" type="file" @input="form.photo = $event.target.files[0]"/>
+            <input id="icon" name="icon" type="file" @input="form.icon = $event.target.files[0]"/>
           </label>
         </div>
         <button type="submit"
@@ -183,6 +183,7 @@ export default {
       description: props.project.description,
       icon: props.project.icon,
       employer_id: props.project.employer_id,
+      project_id: props.project.id,
     })
     return {form}
   },
