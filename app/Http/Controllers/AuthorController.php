@@ -40,7 +40,9 @@ class AuthorController extends Controller
 
         $project= Project::find($data['project_id']);
         $project->update($data);
+        $project->save();
+        // dd($project);
 
-        dd($project);
+        return redirect()->route('project.view', $data['project_id']);
     }
 }

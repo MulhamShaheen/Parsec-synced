@@ -15,8 +15,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index(Request $request){
-        return Inertia::render('Home', [
-            'name' => 'Mulham',
-        ]);
+        return Inertia::render('Home');
     }
 }

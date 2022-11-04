@@ -1,5 +1,5 @@
 <template>
-  <Header auth="auth">
+  <Header :auth="auth">
 
   </Header>
   <div class="m-8">

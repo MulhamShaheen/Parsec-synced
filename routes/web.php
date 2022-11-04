@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProjectController;
@@ -27,7 +28,7 @@ Route::get('/', function () {
         'title' => 'Homepage'
     ]);
 })->name('homepage');
-
+Route::get('/dashboard/projects',[DashboardController::class, 'projects'])->name('dashboard.projects');
 Route::get('/main', [Controller::class, 'index'])->middleware('auth');
 Route::get('/login', [CustomAuthController::class, 'login'])->name('login');
 Route::post('/login', [CustomAuthController::class, 'loginSubmit']);
@@ -80,5 +81,3 @@ Route::post('/project/edit/{id}', [AuthorController::class, 'updateProject'])->n
 Route::post('/project/reply/{id}', [ReplyController::class, 'sendReply'])->name('project.reply');
 
 Route::get('/reply/view/{id}', [ReplyController::class, 'viewReply'])->name('reply.view');
-
-

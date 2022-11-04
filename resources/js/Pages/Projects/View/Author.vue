@@ -37,10 +37,17 @@
         <div class="flex flex-col mx-auto items-center">
             <div v-for="reply in replies" class="w-full p-2">
               <!--              {{reply}}-->
-              <ReplyCard :reply = reply>
+              <ReplyCard :reply = "reply">
 
               </ReplyCard>
             </div>
+        </div>
+      </div>
+      <div class="container mt-6 bg-gray-100 rounded p-4">
+        <div class="m-auto flex content-around items-center">
+          <Link view_as="button" :href="route('project.edit', project.id)" class="flex items-center p-2 text-base font-normal text-indigo-900 rounded-lg dark:text-white dark:hover:bg-indigo-700">
+            <span class="ml-3">Изменить</span>
+          </Link>
         </div>
       </div>
   </div>
