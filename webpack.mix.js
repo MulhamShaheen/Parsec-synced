@@ -22,4 +22,3 @@ mix.setPublicPath('/')
         'css/',
         [require("tailwindcss"),require("autoprefixer"),]
     ).version();
-

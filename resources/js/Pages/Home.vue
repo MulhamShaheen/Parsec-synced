@@ -19,11 +19,6 @@
 
     </MyModal>
 
-    <h1>This is: {{ $page.props.title }}</h1>
-    <pre>
-      {{amoCrm}}
-    </pre>
-
 
   </div>
 </template>

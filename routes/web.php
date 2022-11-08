@@ -22,6 +22,9 @@ use App\Http\Controllers\AuthorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test', function(){
+  return Inertia::render('About');
+})->name('test');
 
 Route::get('/', function () {
     return Inertia::render('Landing', [

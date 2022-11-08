@@ -1,0 +1,48 @@
+@font-face {
+    font-family: Geometrica;
+    font-weight: 400;
+    src: url("../fonts/geometria_light.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Geometrica;
+    font-weight: 700;
+    src: url("../fonts/geometria_bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Geometrica;
+    font-weight: 600;
+    src: url("../fonts/geometria_medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Geometrica;
+    font-weight: 800;
+    src: url("../fonts/geometria_extrabold.otf") format("opentype");
+}
+
+*{
+	font-family: 'Geometrica';
+}
+
+a{
+  color: #5D7BE6;
+}
+.main-submit {
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 280px;
+  height: 40px;
+  background: linear-gradient(111.08deg, #5D7BE6 52.67%, #958BFB 84.06%);
+  opacity: 0.8;
+  border-radius: 9px;
+  line-height: 100%;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+}

@@ -10,6 +10,9 @@
     <script src="{{ asset(mix('js/manifest.js')) }}" defer></script>
     <script src="{{ asset(mix('js/vendor.js')) }}" defer></script>
     <script src="{{ asset(mix('js/app.js')) }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/auth.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/global.css')}}">
+    <script src="{{ asset('css/data.js') }}"></script>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     @inertiaHead
 </head>
