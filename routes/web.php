@@ -40,20 +40,6 @@ Route::get('/register', [CustomAuthController::class, 'register'])->name('regist
 Route::post('/register', [CustomAuthController::class, 'registerSubmit']);
 
 Route::get('/logout', [CustomAuthController::class, 'signOut'])->name('logout');
-//Route::post('/logout', [CustomAuthController::class, 'logoutSubmit']);
-
-//Route::get('/account/info', [CustomAuthController::class, 'fillInfo'], ['role'=>'activist']);
-
-//Route::get('/account/info/{role}', function (){
-//    $role = "activist";
-//    return App::call('App\Http\Controllers\CustomAuthController@fillInfo' , ['role' => $role]);
-//})->name('account.info.activist');
-
-//Route::get('/account/info', function (){
-//    $role = "employer";
-//    return App::call('App\Http\Controllers\CustomAuthController@fillInfo' , ['role' => $role]);
-//})->name('account.info.employer');
-
 
 
 Route::get('/account/info/{role?}', [CustomAuthController::class, 'fillInfo'])->name('account.info');

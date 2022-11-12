@@ -205,6 +205,29 @@ input {
     letter-spacing: -0.015em;
 }
 
+.auth-select-role{
+  width: 280px;
+  height: 40px;
+  opacity: 0.8;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #E4E4E4;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+
+.auth-role-text{
+  font-weight: 500;
+font-size: 14px;
+line-height: 100%;
+color: #737373;
+}
+
 /* .auth-approv>input:checked ~ .checkmark{
     background: linear-gradient(111.08deg, #5D7BE6 52.67%, #958BFB 84.06%);
 } */
@@ -273,7 +296,7 @@ input {
 }
 
 .auth-forget-pass {
-    text-align: center center;
+    /* text-align: center center; */
     color: #5D7BE6;
     font-size: 14px;
     font-weight: 600;

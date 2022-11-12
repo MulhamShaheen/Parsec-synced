@@ -132,11 +132,15 @@ class CustomAuthController extends Controller
                 $info = Info::create($data);
             }
 //            dd($info);
-            return redirect()->route('account.info', [
-                "role" => 'activist',
-            ]);
+            return redirect()->route('account');
+
+            // return redirect()->route('account.info', [
+            //     "role" => 'activist',
+            // ]);
 
         }
+
+        return redirect()->route('homepage');
 
     }
 
@@ -162,11 +166,14 @@ class CustomAuthController extends Controller
                 $info = Employer::create($data);
             }
 //            dd($info);
-            return redirect()->route('account.info', [
-                'role' => 'employer',
-            ]);
+            return redirect()->route('account');
+            // return redirect()->route('account.info', [
+            //     'role' => 'employer',
+            // ]);
 
         }
+        return redirect()->route('homepage');
+
 
     }
 

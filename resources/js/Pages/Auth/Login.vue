@@ -12,7 +12,7 @@
         class="auth-form-input" placeholder="Пароль" >
 
 			<button :disabled="form.processing" type="submit" class="main-submit">Войти</button>
-      <div class="auth-line-contauner">
+      <div class="auth-line-container">
         <p class="auth-line"><span>или</span></p>
       </div>
 			<div class="auth-social-container">
