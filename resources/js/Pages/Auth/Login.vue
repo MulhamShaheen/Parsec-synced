@@ -7,7 +7,7 @@
 			<h1 class="auth-form-title">Вход <a href="" class="auth-form-nav">Регистрация</a></h1>
 			<input id="email-address" v-model="form.email" name="email" autocomplete="email" required
         class="auth-form-input" type="text" placeholder="Логин" >
-
+        <div class="auth-form-input-error" v-if="errors">{{errors.email.toString()}}</div>
 			<input id="password" name="password" type="password" v-model="form.password" autocomplete="current-password" required
         class="auth-form-input" placeholder="Пароль" >
 
@@ -21,6 +21,7 @@
 			</div>
 			<a href="#" class="auth-forget-pass">Забыли пароль?</a>
 		</div>
+
 		<!--<div class="container signin">
 			<p> Еще нет аккаунта? <a href="reg1.html">Зарегистрироваться</a></p>
 		  </div>-->
@@ -33,14 +34,24 @@ import {useForm} from '@inertiajs/inertia-vue3'
 
 export default {
   layout : null,
-  setup() {
+  props:{
+    errors:Object,
+  },
+  setup(props) {
     const form = useForm({
       email: null,
       password: null,
       remember: false,
     })
 
+
+
     return {form}
+  },
+  methods:{
+    postForm(){
+      this.form.post('/login')
+    }
   },
 }
 </script>

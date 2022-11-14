@@ -25,14 +25,15 @@ class CustomAuthController extends Controller
         return redirect('login')->withSucces('Sign in please.');
     }
 
-    public function login()
+    public function login(Request $request)
     {
+        // dd($errors);
         return Inertia::render('Auth/Login');
     }
 
     public function loginSubmit(Request $request)
     {
-        $request->validate([
+          $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
@@ -42,10 +43,18 @@ class CustomAuthController extends Controller
 
             return redirect()->intended('main')
                 ->withSuccess('Signed in');
+            // return response()->json([
+            //   'succes'=> true
+            // ]);
         }
-//        dd($credentials);
-        return redirect("login")->withError( "Аккаунт не найден");
 
+        return redirect()->route("login")->withErrors( ["email"=> "аккаунт не найден"]);
+        // return response()->json([
+        //   'succes'=> false,
+        //   'errors'=>[
+        //     'error1'
+        //   ]
+        // ]);
 
     }
 

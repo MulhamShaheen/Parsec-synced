@@ -83,6 +83,13 @@ input {
     -webkit-box-shadow: none;
 }
 
+.auth-form-input-error {
+    width: 100%;
+    font-size: 15px;
+    padding-left: 15px;
+    color: red;
+}
+
 .auth-line-container {
     width: 100%;
 }
@@ -198,34 +205,32 @@ input {
 .auth-approv-text {
     width: auto;
     font-size: 10px;
-		font-weight: 600;
+    font-weight: 600;
     color: #737373;
     line-height: 104%;
     /* or 10px */
     letter-spacing: -0.015em;
 }
 
-.auth-select-role{
-  width: 280px;
-  height: 40px;
-  opacity: 0.8;
-  margin-bottom: 28px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  border: 1px solid #E4E4E4;
-  border-radius: 9px;
-  cursor: pointer;
+.auth-select-role {
+    width: 280px;
+    height: 40px;
+    opacity: 0.8;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E4E4E4;
+    border-radius: 9px;
+    cursor: pointer;
 }
 
-
-.auth-role-text{
-  font-weight: 500;
-font-size: 14px;
-line-height: 100%;
-color: #737373;
+.auth-role-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #737373;
 }
 
 /* .auth-approv>input:checked ~ .checkmark{

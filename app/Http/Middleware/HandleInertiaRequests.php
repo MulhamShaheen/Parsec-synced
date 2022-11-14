@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -50,8 +51,11 @@ class HandleInertiaRequests extends Middleware
         }
 
 //            $role = $user->role == 1 ? "employer" : "activist";
-
+        // if(session('errors')){
+        //   dd(session('errors')->getBag('default')->getMessages());
+        // }
         return array_merge(parent::share($request), [
+            "errors" => session('errors')? session('errors')->getBag('default')->getMessages(): null,
             "auth" => $user ? [
                 "user" => [
                     "id" => $user->id,
@@ -60,7 +64,13 @@ class HandleInertiaRequests extends Middleware
                     "photo" => $user->prof_picture,
                     "role" => $role
                 ],
-            ] : null
+            ] : null,
+
+          //   function () {
+          //     return Session::get('errors')
+          //         ? Session::get('errors')->getBag('default')->getMessages()
+          //             : (object) [];
+          // },
         ]);
     }
 }
