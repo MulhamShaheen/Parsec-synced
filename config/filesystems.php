@@ -46,6 +46,10 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/profiles',
         ],
+        'public_gallery' =>[
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/gallery',
+        ],
         'public_projects'=>[
             'driver' => 'local',
             'root'   => public_path() . '/uploads/projects',

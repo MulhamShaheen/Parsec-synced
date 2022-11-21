@@ -8,6 +8,7 @@ use App\Models\Faculty;
 use App\Models\Info;
 use App\Models\User;
 use App\Models\Employer;
+use App\Models\GalleryPhoto;
 use Inertia\Inertia;
 
 
@@ -82,5 +83,26 @@ class AccountController extends Controller
         return Inertia::render('Auth/Account/Replies/'.$role,[
             "replies" => $replies,
         ]);
+    }
+
+    public function uploadToGallery(Request $request)
+    {
+      if($request->hasFile('gallery_photo')){
+
+        $title = $request->title;
+        $file = $request->file('gallery_photo');
+        $filename = $file->getClientOriginalName();
+        $file->storeAs('/', $filename, 'public_gallery');
+
+        $gallery_photo = GalleryPhoto::create([
+          'title'=>$title,
+          'filename' => $filename,
+          'order' => 0,
+          'user_id' => $request->user_id,
+        ]);
+
+        $gallery_photo->save();
+        
+      }
     }
 }
