@@ -20,8 +20,10 @@
                     <img :src="'/public/uploads/profiles/' + auth.user.photo" width="40" height="40">
                 </div>
                 <div class="mini-profile-text">
-                    <p class="mini-profile-name">{{auth.user.username}}<br><a class="mini-profile-email"
-                            href="#">{{auth.user.email}}</a></p>
+                    <p class="mini-profile-name">{{auth.user.username}}</p>
+                    <a class="mini-profile-email"
+                            href="#">{{auth.user.email}}
+                        </a>
                 </div>
             </a>
         </div>
@@ -45,7 +47,8 @@
         },
         mounted() {
             var componentName = this.$page.component
-            var target = componentName.split("/")[1].toLowerCase()
+            var tempArr = componentName.split("/")
+            var target = tempArr[tempArr.length - 2].toLowerCase()
 
             this.menuElems[target].icon = this.menuElems[target].icon.replace('passive', 'active')
             console.log(this.$page.component);
@@ -53,9 +56,9 @@
         data() {
             return {
                 menuElems: {
-                    "homepage": {
+                    "home": {
                         title: "Главная",
-                        link: route('homepage'),
+                        link: route('main'),
                         icon: "icon-home-passive.svg",
                     },
                     "projects": {

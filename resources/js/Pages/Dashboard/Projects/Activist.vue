@@ -28,7 +28,7 @@
         },
         props: {
             auth: Object,
-            projects: Array
+            projects: Array,
         },
 
     }

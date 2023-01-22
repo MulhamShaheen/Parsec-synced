@@ -32,7 +32,8 @@ Route::get('/', function () {
     ]);
 })->name('homepage');
 Route::get('/dashboard/projects',[DashboardController::class, 'projects'])->name('dashboard.projects');
-Route::get('/main', [Controller::class, 'index'])->middleware('auth');
+
+Route::get('/main', [Controller::class, 'index'])->middleware('auth')->name('main');
 Route::get('/login', [CustomAuthController::class, 'login'])->name('login');
 Route::post('/login', [CustomAuthController::class, 'loginSubmit']);
 

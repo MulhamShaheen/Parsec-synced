@@ -67,8 +67,8 @@
 /* почта не под именем */
 .mini-profile-text {
     display: flex;
-    flex-wrap: nowrap;
     align-items: flex-start;
+    flex-direction: column;
 
 }
 
@@ -80,7 +80,7 @@
     align-items: center;
     justify-content: space-between;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     color: #0D0D0D;
 

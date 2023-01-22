@@ -25,6 +25,7 @@
 <script>
 import MyModal from "../Shared/Components/MyModal";
 export default{
+  name: "Home/Activist",
   components: {MyModal},
   props:{
     amoCrm: Object
