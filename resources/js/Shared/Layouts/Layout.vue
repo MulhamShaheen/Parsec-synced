@@ -29,7 +29,6 @@
         </div>
         <div class="projects-content">
             <slot />
-
         </div>
 
     </div>
