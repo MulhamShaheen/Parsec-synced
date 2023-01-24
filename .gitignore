@@ -22,3 +22,6 @@ yarn-error.log
 /alfacgiapi/*
 .editorconfig/*
 /fonts/*
+/public/*
+js/app.js
+mix-manifest.json
