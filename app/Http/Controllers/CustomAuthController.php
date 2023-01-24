@@ -29,6 +29,7 @@ class CustomAuthController extends Controller
     {
         // dd($errors);
         return Inertia::render('Auth/Login');
+        dd($request);
     }
 
     public function loginSubmit(Request $request)

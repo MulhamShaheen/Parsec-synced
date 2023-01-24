@@ -7,7 +7,7 @@ mix.alias({
     ziggy: path.resolve("vendor/tightenco/ziggy/dist/vue"),
 });
 
-mix.setPublicPath('/')
+mix.setPublicPath('public/')
     .js('resources/js/app.js', 'js/')
     .vue()
     .webpackConfig({
@@ -19,6 +19,6 @@ mix.setPublicPath('/')
     })
     .extract()
     .postCss('resources/css/app.css',
-        'css/',
+        'public/css/',
         [require("tailwindcss"),require("autoprefixer"),]
     ).version();
