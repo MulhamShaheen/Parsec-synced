@@ -5,7 +5,7 @@
       <div class="flex flex-col mx-auto items-center">
         <div class="flex gap-6 w-full">
           <img class="object-cover w-32 h-32 rounded-t-lg md:h-auto md:rounded-none md:rounded-l-lg"
-               :src="'/public/uploads/projects/' + project.icon" alt="">
+               :src="'/uploads/projects/' + project.icon" alt="">
           <div class="p-4">
             <h2 class="text-3xl">{{ project.title }}</h2>
             <p>{{ project.description }}</p>
@@ -24,7 +24,7 @@
     <div class="container my-12 bg-gray-100 rounded p-4">
       <div class="flex flex-col gap-6 w-full items-center">
         <img class="object-cover w-32 h-32 rounded-t-lg md:h-auto md:rounded-none md:rounded-l-lg"
-             :src="'/public/uploads/profiles/' + employer.icon" alt="">
+             :src="'/uploads/profiles/' + employer.icon" alt="">
         <div class="p-4">
           <h2 class="text-3xl">{{ employer.title }}</h2>
         </div>

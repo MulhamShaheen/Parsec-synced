@@ -17,7 +17,7 @@
             <div class="project-notification"><img src="/img/svg/notification.svg" width="20" height="20"></div>
             <a :href="route('account')" class="project-mini-profile">
                 <div class="mini-profile-avatar">
-                    <img :src="'/public/uploads/profiles/' + auth.user.photo" width="40" height="40">
+                    <img :src="'/uploads/profiles/' + auth.user.photo" width="40" height="40">
                 </div>
                 <div class="mini-profile-text">
                     <p class="mini-profile-name">{{auth.user.username}}</p>
@@ -46,16 +46,18 @@
         },
         mounted() {
             var componentName = this.$page.component
-            var tempArr = componentName.split("/")
-            var target = tempArr[tempArr.length - 2].toLowerCase()
-
-            this.menuElems[target].icon = this.menuElems[target].icon.replace('passive', 'active')
+            var tempArr = this.$page.url.split("/")
+            var target = tempArr[tempArr.length - 1].toLowerCase()
+            console.log(target)
+            if (target in this.menuElems){
+                this.menuElems[target].icon = this.menuElems[target].icon.replace('passive', 'active')
+            } 
             console.log(this.$page.component);
         },
         data() {
             return {
                 menuElems: {
-                    "home": {
+                    "main": {
                         title: "Главная",
                         link: route('main'),
                         icon: "icon-home-passive.svg",

@@ -5,7 +5,7 @@
   <form @submit.prevent="form.post('/register')" class="mt-8 space-y-6" >
 
       <div class="auth-container">
-          <h1 class="auth-form-title">Регистрация <a href="" class="auth-form-nav">Вход</a></h1>
+          <h1 class="auth-form-title">Регистрация <a :href="route('login')" class="auth-form-nav">Вход</a></h1>
           <input id="username"  v-model="form.username"  name="username" required class="auth-form-input" type="text" placeholder="Логин">
 
           <input id="email-address"  v-model="form.email"  name="email" autocomplete="email" required class="auth-form-input" type="text" placeholder="Электронная почта">

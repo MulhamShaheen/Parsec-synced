@@ -4,7 +4,7 @@
   </div>
 	<form @submit.prevent="form.post('/login')">
 		<div class="auth-container">
-			<h1 class="auth-form-title">Вход <a href="" class="auth-form-nav">Регистрация</a></h1>
+			<h1 class="auth-form-title">Вход <a :href="route('register')" class="auth-form-nav">Регистрация</a></h1>
 			<input id="email-address" v-model="form.email" name="email" autocomplete="email" required
         class="auth-form-input" type="text" placeholder="Логин" >
         <div class="auth-form-input-error" v-if="errors">{{errors.email.toString()}}</div>

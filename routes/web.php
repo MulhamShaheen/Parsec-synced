@@ -23,7 +23,7 @@ use App\Http\Controllers\AuthorController;
 |
 */
 Route::get('test', function(){
-  return Inertia::render('About');
+  return Inertia::render('Test');
 })->name('test');
 
 Route::get('/', function () {
