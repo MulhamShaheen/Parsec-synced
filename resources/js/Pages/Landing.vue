@@ -1,134 +1,221 @@
 <template>
-  <Head>
-    <title>{{ $page.props.title }} - My awesome app</title>
-  </Head>
-    <div class="relative overflow-hidden bg-white">
-      <div class="mx-auto max-w-7xl">
-        <div class="relative z-10 bg-white pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-          <svg class="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 transform text-white lg:block"
-               fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="50,0 100,0 50,100 0,100"/>
-          </svg>
+	<Head>
+    	<title>{{ $page.props.title }} - My awesome app</title>
+  	</Head>
+	<div class="unlock-main-header">
+    <a href="/">
+			<img class="logo-unlock" src="/img/svg/unlock-logo.svg" alt="" width="100" height="42">
+		</a>
+		<div class="header-nav">
+			<a href="#for-whom">Для кого</a>
+			<a href="#about">О программе</a>
+			<a href="#projects">Проекты</a>
+			<a href="#partners">Партнеры</a>
+		</div>
+    <Link class="main-link-button main-submit-white" as="button" :href="route('login')">
+      Войти
+      <img src="/img/svg/arrow-left-white.svg" class="submit-arrow-color" width="17" height="17">
+    </Link>
+	</div>
 
-          <div>
-            <div class="relative px-4 pt-6 sm:px-6 lg:px-8">
-              <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                <div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
-                  <div class="flex w-full items-center justify-between md:w-auto">
-                    <a href="#">
-                      <span class="sr-only">Your Company</span>
-                      <img alt="Your Company" class="h-8 w-auto sm:h-10"
-                           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600">
-                    </a>
-                    <div class="-mr-2 flex items-center md:hidden">
-                      <button type="button"
-                              class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                              aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <!-- Heroicon name: outline/bars-3 -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
-                  <!--                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Product</a>-->
-
-                  <!--                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Features</a>-->
-
-                  <!--                <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Marketplace</a>-->
-
-                  <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Войти</a>
-
-                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Регестрация</a>
-                </div>
-              </nav>
-            </div>
-
-            <!--
-              Mobile menu, show/hide based on menu open state.
-
-              Entering: "duration-150 ease-out"
-                From: "opacity-0 scale-95"
-                To: "opacity-100 scale-100"
-              Leaving: "duration-100 ease-in"
-                From: "opacity-100 scale-100"
-                To: "opacity-0 scale-95"
-            -->
-            <div class="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition md:hidden">
-              <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
-                <div class="flex items-center justify-between px-5 pt-4">
-                  <div>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                         alt="">
-                  </div>
-                  <div class="-mr-2">
-                    <button type="button"
-                            class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                      <span class="sr-only">Close main menu</span>
-                      <!-- Heroicon name: outline/x-mark -->
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                           stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="space-y-1 px-2 pt-2 pb-3">
-                  <!--                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Product</a>-->
-
-                  <!--                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Features</a>-->
-
-                  <!--                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Marketplace</a>-->
-
-                  <a href="#"
-                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Регестрация</a>
-                </div>
-                <a href="#"
-                   class="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100">Войти</a>
-              </div>
-            </div>
-          </div>
-
-          <main class="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div class="sm:text-center lg:text-left">
-              <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block xl:inline">Parsec</span>
-              </h1>
-              <p class="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-                это платформа для проектов, идей и стартапов,
-                на которой вы можете найти единомышленников и инициативных ребят в свою команду</p>
-              <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div class="rounded-md shadow">
-                  <a href="main"
-                     class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg">Начинать
-                    творить</a>
-                </div>
-                <div class="mt-3 sm:mt-0 sm:ml-3">
-                  <a href="/"
-                     class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg">О
-                    нас</a>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-      <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-             src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-             alt="">
-      </div>
+	<div class="main-greeting">
+		<div class="greeting-area">
+				<span class="greeting-txt">Открой новый мир</span>
+		 		<span class="greeting-txt purple">возможностей</span>
+		</div>
+		<div class="description-area">
+			<div class="description">
+				<img src="/img/svg/main-icon-user.svg" alt="" width="24" height="24">
+				<div class="description-span">
+					<span class="description-txt"> <span class="grey">с помощью</span> собственной</span>
+					<span class="description-txt">собранной командой</span>
+				</div>
+			</div>
+			<div class="description">
+				<img src="/img/svg/main-icon-dollar.svg" alt="" width="24" height="24">
+				<div class="description-span">
+					<span class="description-txt"> <span class="grey">с помощью</span> проверенных</span>
+					<span class="description-txt">инвесторов программы</span>
+				</div>
+			</div>
+		</div>
+    <div class=" mt-10">
+      <Link class="main-submit main-link-button" as="button" :href="route('register')">
+			Зарегестрироваться <img src="/img/svg/arrow-left-black.svg" class="submit-arrow" width="17" height="17">
+        </Link>
     </div>
+		
+		<!-- <button class="main-submit main-link-button">Зарегестрироваться <img src="/img/svg/arrow-left-black.svg" class="submit-arrow" width="17" height="17"></button> -->
+		<img class="mini-project-card" src="/img/svg/mini-project-card.svg" alt="" width="342" height="75">
+	</div>
+	
+
+	<div class="main-team-area">
+		<div class="memojis-area">
+			<img class="male-memojis" src="/img/svg/male-memojis.svg" alt="" width="282" height="282">
+		</div>
+		<div class="main-team-txt">
+			<div class="main-team-header">
+				<span class="">Набор команды</span>
+				<span class="">с Unlock — простое</span>
+				<span class="">и понятное занятие</span>
+			</div>
+			<div class="main-team-description">
+				<span class="">Тебе нужно лишь однажды разместить проект, затем</span>
+				<span class="">ты сможешь выбирать кандидатов в проектную команду</span>
+				<span class="">или же искать их с помощью нашей ленты.</span>
+			</div>
+		</div>
+	</div>
+
+	<div id="for-whom" class="for-whom-area">
+		<span class="header">Кому подойдет?</span>
+    <div class="for-whom-container">
+      <table>
+        <tr>
+          <td class="card-1"><img class="tb-img" src="/img/svg/card-1.svg" alt="" width="528" height="196"></td>
+          <td class="card-2"><img class="tb-img" src="/img/svg/card-2.svg" alt="" width="528" height="196"></td>
+        </tr>
+        <tr>
+          <td class="card-3"><img class="tb-img" src="/img/svg/card-3.svg" alt="" width="528" height="196"></td>
+          <td class="card-4"><img class="tb-img" src="/img/svg/card-4.svg" alt="" width="528" height="196"></td>
+        </tr>
+      </table>
+    </div>
+		
+	</div>
+
+	<div id="about" class="main-idea-area">
+		<div class="main-idea-img">
+			<span>Основная идея:</span>
+			<img class="idea-img" src="/img/svg/main-idea.svg" alt="" width="217" height="217">
+		</div>
+		<div class="main-idea-txt">
+			<span class="purple">Придумай стартап,</span>
+			<span class="grey">опиши идею,</span>
+			<span class="grey">заполняй резюме,</span>
+			<span class="grey">а наш проект поможет</span>
+			<span class="grey">тебе собрать команду</span>
+		</div>
+	</div>
+
+	<div id="projects" class="in-work-area">
+		<span class="header">Проекты в работе</span>
+		<div class="group-project">
+			<div class="p1">
+				<div class="project-card"> 
+					<div class="project-card-header"></div>
+					<div class="project-card-body">
+						
+						<div  class="card-body-header"><h4>Проект №1</h4><span class="project-deadline-date">до 12.2022</span></div>
+						<p class="card-body-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloremque similique eum nostrum quo cum voluptates, blanditiis laborum pariatur saepe optio, ab impedit molestias maiores ipsum autem reprehenderit veritatis aliquam nemo esse, architecto fuga ducimus. Soluta dignissimos sed nisi. Doloribus animi placeat eum provident eos mollitia laudantium expedita nihil incidunt sunt consequatur tempore cumque facilis, saepe alias nam doloremque repudiandae iste iusto modi. Voluptates veniam repellendus voluptatem ratione temporibus dicta.</p>
+						
+					</div>
+				</div>
+				<div class="project-card"> 
+					<div class="project-card-header"></div>
+					<div class="project-card-body">
+						
+						<div  class="card-body-header"><h4>Проект №3</h4><span class="project-deadline-date">до 12.2022</span></div>
+						<p class="card-body-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, delectus cumque! Asperiores molestias adipisci eligendi aliquam, corrupti quod ullam, quos quasi consectetur id nulla alias quibusdam beatae optio? Hic ducimus possimus est atque incidunt quaerat ratione quas ab sequi quidem optio modi reiciendis officia facilis voluptatum in voluptas pariatur placeat mollitia, sint, minus odio explicabo nostrum. Cum alias ut, nam eos saepe, rem, provident animi reprehenderit voluptatibus laboriosam nostrum esse.</p>
+						
+					</div>
+				</div>
+			</div>
+			<div class="p2">
+				<div class="project-card"> 
+					<div class="project-card-header"></div>
+					<div class="project-card-body">
+						
+						<div  class="card-body-header"><h4>Проект №3</h4><span class="project-deadline-date">до 12.2022</span></div>
+						<p class="card-body-p">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, corrupti. Deleniti, delectus, facere praesentium molestias cum labore sed possimus facilis totam aut ipsa. Sequi cumque odit explicabo incidunt fugiat accusamus eaque velit, quo recusandae corrupti iure! In vel harum enim voluptate alias ab cum eius ducimus quas expedita, possimus, sapiente facere sed odit, ratione doloremque eligendi quos quaerat tempore tempora et. Earum exercitationem reiciendis tenetur dignissimos dolor, reprehenderit tempore similique?</p>
+						
+					</div>
+				</div>
+				<div class="project-card"> 
+					<div class="project-card-header"></div>
+					<div class="project-card-body">
+						
+						<div  class="card-body-header"><h4>Проект №4</h4><span class="project-deadline-date">до 12.2022</span></div>
+						<p class="card-body-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis nam velit odit obcaecati minima accusantium, accusamus inventore minus amet totam laboriosam reiciendis officia temporibus quia culpa fugiat ratione magnam iusto. Commodi, aliquid molestiae. Mollitia laborum laudantium obcaecati qui assumenda est nulla nisi quas vel voluptas consequatur optio dolorem a deleniti dolores, quae totam provident accusantium fugit temporibus! Consequuntur perspiciatis quasi atque voluptas porro hic deserunt sint. Perspiciatis quaerat explicabo id?</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="partners" class="group-partner-area">
+		<div class="group-partner-header">
+			<div class="group-partner-txt">
+				<span class="header">Партнеры проекта</span>
+				<span class="header">которые<span class="purple"> помогли</span></span>
+			</div>
+			<p class="partner-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et tempus felis. Proin et tempus felis. Proin et tempus felis. </p>
+		</div>
+	</div>
+
+	<div class="faq-area">
+		<span class="header">Вопрос-ответ</span>
+		<div class="faq-content">
+			<div class="faq-question">
+			  <input id="q1" type="checkbox" class="panel">
+			  <div class="plus purple">+</div>
+			  <label for="q1" class="panel-title">1. Сколько человек можно в команду?</label>
+			  <div class="panel-content">Lorem ipsum dolor sit amet.</div>
+			</div>
+			
+			<div class="faq-question">
+				<input id="q2" type="checkbox" class="panel">
+				<div class="plus purple">+</div>
+				<label for="q2" class="panel-title">2. Смогу ли я выбирать кандидатов в проектную команду?</label>
+				<div class="panel-content">Lorem ipsum dolor sit amet.</div>
+			  </div>
+			
+
+			<div class="faq-question">
+				<input id="q3" type="checkbox" class="panel">
+				<div class="plus purple">+</div>
+				<label for="q3" class="panel-title">3. Lorem ipsum dolor sit amet.</label>
+				<div class="panel-content">Lorem ipsum dolor sit amet.</div>
+			  </div>
+			
+			  <div class="faq-question">
+				<input id="q4" type="checkbox" class="panel">
+				<div class="plus purple">+</div>
+				<label for="q4" class="panel-title">4. Lorem ipsum dolor sit amet.</label>
+				<div class="panel-content">Lorem ipsum dolor sit amet.</div>
+			  </div>
+
+			  <div class="faq-question">
+				<input id="q5" type="checkbox" class="panel">
+				<div class="plus purple">+</div>
+				<label for="q5" class="panel-title">5. Lorem ipsum dolor sit amet.</label>
+				<div class="panel-content">Lorem ipsum dolor sit amet.</div>
+			  </div>
+		  </div>
+	</div>
+
+	<div class="end-area">
+		<Link class="main-submit main-link-button VK" as="button" href="http://vk.com/unlock_shift">
+			VK <img src="/img/svg/arrow-left-black.svg" class="submit-arrow" width="17" height="17">
+        </Link>
+		<Link class="main-submit main-link-button reg-button" as="button" :href="route('register')">
+			Зарегестрироваться <img src="/img/svg/arrow-left-black.svg" class="submit-arrow" width="17" height="17">
+        </Link>
+	</div>
 </template>
 <script>
-// import Layout from "../Shared/Layouts/Layout";
+    import {
+        Head
+    } from '@inertiajs/inertia-vue3'
+	import appCSS from '/css/unlock-main.css';
 
-export default {
-  layout: null
-}
+    export default {
+        components: {
+            Head
+        },
+        layout: null,
+    }
+
 </script>
