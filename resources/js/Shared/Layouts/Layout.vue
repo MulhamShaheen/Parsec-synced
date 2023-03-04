@@ -1,4 +1,7 @@
 <template>
+    <Head>
+   	    <title>{{ $page.props.title }} - My awesome app</title>
+    </Head>
     <!-- <Header :auth="auth">
 
   </Header> -->

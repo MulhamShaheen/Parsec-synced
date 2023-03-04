@@ -1,7 +1,7 @@
 <template>
 	<Head>
-    	<title>{{ $page.props.title }} - My awesome app</title>
-  	</Head>
+   	<title>{{ $page.props.title }} - My awesome app</title>
+  </Head>
 	<div class="unlock-main-header">
     <a href="/">
 			<img class="logo-unlock" src="/img/svg/unlock-logo.svg" alt="" width="100" height="42">

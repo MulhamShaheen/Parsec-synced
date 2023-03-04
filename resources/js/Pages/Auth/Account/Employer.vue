@@ -22,7 +22,9 @@
       <div class="profile-fullness">
         <p class="area-heading">Заполненность профиля</p>
       </div>
-      <img src="/img/svg/edit.svg" class="edit" width="40" height="40">
+      <Link class="edit" href="/account/edit" method="get">
+        <img src="/img/svg/edit.svg" width="40" height="40">
+      </Link>
     </div>
 
     <div class="about-us-area">
@@ -40,8 +42,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -51,6 +51,7 @@ export default {
   name: "Employer",
   component: "Profile/Employer",
   props:{
+    info:Array,
     auth:Object,
   }
 }

@@ -25,7 +25,8 @@ class AccountController extends Controller
             $data['projects'] = $projects?  $projects: null;
 
             return Inertia::render('Auth/Account/Employer',[
-                'info'=> $data
+                'info'=> $data,
+                'title'=> "Account"
             ]);
         }
 
@@ -41,10 +42,35 @@ class AccountController extends Controller
 
 
         return Inertia::render('Auth/Account/Activist',[
-            'info'=>$data
+            'info'=>$data,
+            'title'=>"Account"            
         ]);
 
     }
+
+    public function accountEdit(Request $request){
+        $user = Auth::user();
+        $role = $user->role == 1? "Employer" : "Activist";
+        
+        $employer = $user->aboutEmployer()->get()[0];
+        $info = $employer?  $employer->toArray(): null;
+
+        return Inertia::render('Auth/Account/Edit/'.$role,[
+            'info'=> $info,
+            'title'=> "Edit account"
+        ]);
+    }
+
+    public function handleEditRequest(Request $request){
+
+        $data = $request->all();
+
+        $user = Auth::user();
+        $info = $user->info();
+        $info->update([$data['title'] => $data['value']]);
+        
+    }
+
     public function viewProjects(Request $request){
         $user = Auth::user();
         $role = $user->role == 1? "Employer" : "Activist";
