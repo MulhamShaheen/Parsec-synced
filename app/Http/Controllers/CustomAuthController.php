@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\Info;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -126,9 +127,12 @@ class CustomAuthController extends Controller
             $request->validate([
                 'firstname' => 'required',
                 'lastname' => 'required',
+                'birthdate' =>'date_format:d/m/Y',
             ]);
             $data = $request->all();
 
+            $date = Carbon::createFromFormat('d/m/Y', $data['birthdate']);
+            $data['birthdate'] = $date;
             $user = Auth::user();
             $user->role = 2;
             $user->save();

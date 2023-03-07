@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Inertia\Middleware;
+use Carbon\Carbon;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -40,6 +41,7 @@ class HandleInertiaRequests extends Middleware
         $user = Auth::user();
         $role = null;
         if($user){
+            $createdAt = Carbon::parse($user->created_at);
             switch ($user->role){
                 case 1:
                     $role = "employer";
@@ -50,10 +52,9 @@ class HandleInertiaRequests extends Middleware
             }
         }
 
-//            $role = $user->role == 1 ? "employer" : "activist";
-        // if(session('errors')){
-        //   dd(session('errors')->getBag('default')->getMessages());
-        // }
+
+        
+
         return array_merge(parent::share($request), [
             "errors" => session('errors')? session('errors')->getBag('default')->getMessages(): null,
             "auth" => $user ? [
@@ -62,6 +63,7 @@ class HandleInertiaRequests extends Middleware
                     "username" => $user->name,
                     "email" => $user->email,
                     "photo" => $user->prof_picture,
+                    "created_at" => $createdAt->format('d/m/Y'),
                     "role" => $role
                 ],
             ] : null,

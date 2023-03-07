@@ -29,7 +29,7 @@
 
     <div class="about-us-area">
       <p class="area-heading">О нас</p>
-      <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro obcaecati adipisci rerum ullam a voluptates.</p>
+      <p class="description">{{ info.info.description }}</p>
     </div>
 
     <div class="photo-gallery-area">

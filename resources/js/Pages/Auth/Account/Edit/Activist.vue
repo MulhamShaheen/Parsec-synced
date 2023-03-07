@@ -12,11 +12,11 @@
         <h2 class=" font-bold">Данные пользевателя</h2>
         <div class="flex gap-2">
           <button  style="none" class='edit-pencil-active' 
-            v-on:click="updateData((['username-editor', 'title-editor']))">
+            v-on:click="updateData((['username-editor', 'firstname-editor', 'lastname-editor', 'middlename-editor']))">
               <img src="/img/svg/pencel-purple.svg"  width="38" height="38">
           </button>
           <button  style="none" class="edit-pencil"  
-            v-on:click="toggleEditing((['username-editor', 'title-editor']))">
+            v-on:click="toggleEditing((['username-editor', 'firstname-editor', 'lastname-editor', 'middlename-editor']))">
               <img src="/img/svg/pencel-purple.svg"  width="38" height="38">
           </button>
         </div>
@@ -25,28 +25,15 @@
         <span>Логин: </span>
         <InfoEditor ref="username-editor" :title="'name'" :value="auth.user.username" :type="'string'" :url="'/account/update'"
           :singleMode="false" :showLabel="false" :userData="true"/>  
-        <span>Название: </span>
-        <InfoEditor ref="title-editor" :title="'title'" :value="info.title" :type="'string'" :url="'/account/update'" 
+        <span>Имя: </span>
+        <InfoEditor ref="firstname-editor" :title="'firstname'" :value="info.firstname" :type="'string'" :url="'/account/update'" 
+          :singleMode="false" :showLabel="false"/>
+        <span>Фамилия: </span>
+        <InfoEditor ref="lastname-editor" :title="'lastname'" :value="info.lastname" :type="'string'" :url="'/account/update'" 
+          :singleMode="false" :showLabel="false"/>
+        <span>Отчество: </span>
+        <InfoEditor ref="middlename-editor" :title="'middlename'" :value="info.middlename" :type="'string'" :url="'/account/update'" 
           :singleMode="false" :showLabel="false"/>        
-      </div>
-    </div>
-
-    <div class="edit-area">
-      <div class="flex justify-between content-between items-center w-full">
-        <h2 class=" font-bold">О нас</h2>        
-      </div>
-        <InfoEditor ref="description-editor" :title="'description'" :value="info.description" :type="'text'" :url="'/account/update'"
-          :singleMode="true" :showLabel="false" :userData="false"/>  
-    </div>
-
-
-    <div class="photo-gallery-area">
-      <p class="area-heading">Фотогалерея <br></p>
-      <div class="photos">
-        <div class="photo"></div>
-        <div class="photo"></div>
-        <div class="photo"></div>
-        <div class="photo"></div>
       </div>
     </div>
   </div>
@@ -68,8 +55,8 @@
   import InfoEditor from "../../../../Shared/Components/InfoEditor"
   export default {
 
-    name: "Employer",
-    component: "Profile/Edit/Employer",
+    name: "Activist",
+    component: "Profile/Edit/Activist",
     components:{InfoEditor},
     props:{
       info:Object,

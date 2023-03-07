@@ -52,9 +52,8 @@ class AccountController extends Controller
         $user = Auth::user();
         $role = $user->role == 1? "Employer" : "Activist";
         
-        $employer = $user->aboutEmployer()->get()[0];
-        $info = $employer?  $employer->toArray(): null;
-
+        $info = $user->info()->get()[0];
+        // dd($info);
         return Inertia::render('Auth/Account/Edit/'.$role,[
             'info'=> $info,
             'title'=> "Edit account"
@@ -66,6 +65,11 @@ class AccountController extends Controller
         $data = $request->all();
 
         $user = Auth::user();
+        if($data['userData']){
+            $user->update([$data['title'] => $data['value']]);
+            return;
+        }
+
         $info = $user->info();
         $info->update([$data['title'] => $data['value']]);
         
