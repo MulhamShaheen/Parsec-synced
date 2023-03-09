@@ -1,7 +1,4 @@
 /node_modules
-/public/hot
-/public/storage
-/public/js
 /storage/*.key
 /vendor
 .env
@@ -22,14 +19,5 @@ yarn-error.log
 /alfacgiapi/*
 .editorconfig/*
 /fonts/*
-/public/*
 js/app.js
-mix-manifest.json
-/public/mix-manifest.json
-/public/js/app.js
-/public/mix-manifest.json
-/public/js/app.js
-/public/mix-manifest.json
-/public/js/app.js
-/public/mix-manifest.json
 composer.json
