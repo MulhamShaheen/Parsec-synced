@@ -60,6 +60,8 @@ Route::get('/account', [AccountController::class, 'accountManager'])->name('acco
 Route::get('/account/edit', [AccountController::class, 'accountEdit'])->name('account.edit'); //handleEditRequest
 // Route::post('/account/edit', [AccountController::class, 'accountEdit'])->name('account.edit');
 Route::post('/account/update', [AccountController::class, 'handleEditRequest'])->name('account.update');
+Route::get('/account/gallery', [AccountController::class, 'viewGallery'])->name('account.gallery');
+
 
 Route::get('/account/project', [AccountController::class, 'viewProjects'])->name('account.projects');
 Route::get('/account/replies', [AccountController::class, 'viewReplies'])->name('account.replies');

@@ -115,4 +115,8 @@ class User extends Authenticatable
         }
         return $this->hasMany(Reply::class);
     }
+
+    public function gallery(){
+        return $this->hasMany(Image::class);
+    }
 }

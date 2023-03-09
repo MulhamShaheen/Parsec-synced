@@ -8,8 +8,8 @@
       <div class="main-info">
         <p><b>Основная информация</b></p>
         <p class="grey-text ID">Уникальный ID: 000001</p>
-        <p class="telephone-number"><img src="/img/svg/mobile-button.svg" width="20" height="20"> +7-900-800-76-54</p>
-        <p class="regestration-date grey-text">Дата регистрации: 10/13/2022</p>
+        <p class="telephone-number"><img src="/img/svg/mobile-button.svg" width="20" height="20"> </p>
+        <p class="regestration-date grey-text">Дата регистрации: {{ auth.user.created_at }}</p>
       </div>
     </div>
 

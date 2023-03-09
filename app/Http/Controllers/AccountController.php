@@ -51,11 +51,12 @@ class AccountController extends Controller
     public function accountEdit(Request $request){
         $user = Auth::user();
         $role = $user->role == 1? "Employer" : "Activist";
-        
+        $gallery = $user->gallery()->get()->toArray();
         $info = $user->info()->get()[0];
         // dd($info);
         return Inertia::render('Auth/Account/Edit/'.$role,[
             'info'=> $info,
+            'gallery' => $gallery,
             'title'=> "Edit account"
         ]);
     }
@@ -115,6 +116,13 @@ class AccountController extends Controller
         ]);
     }
 
+    public function viewGallery(Request $request){
+
+        $user = Auth::user();
+
+        dd($request->user()->email);
+    }
+
     public function uploadToGallery(Request $request)
     {
       if($request->hasFile('gallery_photo')){
@@ -122,7 +130,7 @@ class AccountController extends Controller
         $title = $request->title;
         $file = $request->file('gallery_photo');
         $filename = $file->getClientOriginalName();
-        $file->storeAs('/', $filename, 'public_gallery');
+        $file->storeAs('/'.$request->user()->id.'/', $filename, 'public_gallery');
 
         $gallery_photo = GalleryPhoto::create([
           'title'=>$title,

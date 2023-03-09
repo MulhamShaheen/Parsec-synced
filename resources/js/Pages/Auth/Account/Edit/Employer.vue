@@ -41,31 +41,43 @@
 
 
     <div class="photo-gallery-area">
-      <p class="area-heading">Фотогалерея <br></p>
-      <div class="photos">
-        <div class="photo"></div>
-        <div class="photo"></div>
-        <div class="photo"></div>
-        <div class="photo"></div>
+      <div class="flex justify-between w-full pr-4 pt-4">
+        <span class="area-heading">Фотогалерея</span>
+        <button v-if="gallery.length" style="none" class="edit-pencil"  
+              v-on:click="toggleEditing((['username-editor', 'title-editor']))">
+                <img src="/img/svg/pencel-purple.svg"  width="38" height="38">
+        </button>
+      </div>
+      <div v-if="gallery.length" class="photos-edit">
+        <div class="photo-edit"></div>
+        <div class="photo-edit"></div>
+        <div class="photo-edit"></div>
+        <div class="photo-edit"></div>
+      </div>
+      <div v-else class="photos-empty">
+        <div>
+          <form @submit.prevent="submit">
+            <input class="w-full h-full" type="file" @input="galleryForm.image = $event.target.files[0]" />
+            <progress v-if="galleryForm.progress" :value="galleryForm.progress.percentage" max="100">
+              {{ galleryForm.progress.percentage }}%
+            </progress>
+          </form>
+        </div>
+        <!-- <button v-if="!galleryEditing"  class="bg-indigo-700 text-white p-2 rounded-lg"  
+              v-on:click="toggleGalleryEditing">
+              Добавить фотографии 
+        </button> -->
       </div>
     </div>
-  </div>
-
-  <InfoEditor :title="'description'" :value="info.description" :type="'text'" :url="'/account/update'" :singleMode="true">
-  </InfoEditor>
-
-  <div class="edit-container mt-2">
-    <InfoEditor ref="name-editor" :title="'name'" :value="auth.user.username" :type="'string'" :url="'/account/update'" 
-    :singleMode="false" :userData="true"/>
-    <button v-on:click="(['name-editor'])">
-      send
-    </button>
   </div>
 
 </template>
 
 <script>
+  import { useForm } from '@inertiajs/inertia-vue3'
   import InfoEditor from "../../../../Shared/Components/InfoEditor"
+
+
   export default {
 
     name: "Employer",
@@ -74,8 +86,21 @@
     props:{
       info:Object,
       auth:Object,
+      gallery: Array,
+    },
+    setup(preps){
+      const galleryForm = useForm({
+        name: null,
+        image: null,
+      })
+      return {
+          galleryForm
+      }
     },
     methods:{
+      toggleGalleryEditing(){
+        this.galleryEditing = !this.galleryEditing
+      },
       toggleEditing(refs){
         refs.forEach(ref => {
           console.log(this.$refs[ref])
@@ -93,7 +118,7 @@
     },
     data(){
       return{
-        
+        galleryEditing: false,
       }
     }
   }
