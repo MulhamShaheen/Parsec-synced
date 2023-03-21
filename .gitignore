@@ -21,3 +21,4 @@ yarn-error.log
 /fonts/*
 js/app.js
 composer.json
+package-lock.json

@@ -1,6 +1,6 @@
 <template>
   <div class="profile-content">
-    <div class="main-info-area">
+    <div class="user-area">
       <img :src="'/uploads/profiles/' + auth.user.photo" width="170" height="170" class="profile-avatar">
       <button type="submit" class="main-submit">
         <span class="w-full">Обновить фотографию</span>	 
@@ -43,16 +43,10 @@
     <div class="photo-gallery-area">
       <div class="flex justify-between w-full pr-4 pt-4">
         <span class="area-heading">Фотогалерея</span>
-        <button v-if="gallery.length" style="none" class="edit-pencil"  
-              v-on:click="toggleEditing((['username-editor', 'title-editor']))">
-                <img src="/img/svg/pencel-purple.svg"  width="38" height="38">
-        </button>
+        
       </div>
       <div v-if="gallery.length" class="photos-edit">
-        <div class="photo-edit"></div>
-        <div class="photo-edit"></div>
-        <div class="photo-edit"></div>
-        <div class="photo-edit"></div>
+        <galleryEditor :root="'/uploads/gallery/'+auth.user.id" :endpoint="route('gallery.update')" :images="gallery"></galleryEditor>
       </div>
       <div v-else class="photos-empty">
         <div>
@@ -63,10 +57,6 @@
             </progress>
           </form>
         </div>
-        <!-- <button v-if="!galleryEditing"  class="bg-indigo-700 text-white p-2 rounded-lg"  
-              v-on:click="toggleGalleryEditing">
-              Добавить фотографии 
-        </button> -->
       </div>
     </div>
   </div>
@@ -76,13 +66,18 @@
 <script>
   import { useForm } from '@inertiajs/inertia-vue3'
   import InfoEditor from "../../../../Shared/Components/InfoEditor"
+  import GalleryEditor from "../../../../Shared/Components/GalleryEditor"
+
 
 
   export default {
 
     name: "Employer",
     component: "Profile/Edit/Employer",
-    components:{InfoEditor},
+    components:{
+      InfoEditor,
+      GalleryEditor
+    },
     props:{
       info:Object,
       auth:Object,

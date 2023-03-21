@@ -9,6 +9,8 @@ use App\Models\Info;
 use App\Models\User;
 use App\Models\Employer;
 use App\Models\GalleryPhoto;
+use App\Models\Image;
+
 use Inertia\Inertia;
 
 
@@ -17,6 +19,8 @@ class AccountController extends Controller
     public function accountManager(Request $request)
     {
         $user = Auth::user();
+        $gallery = $user->gallery()->get()->all();
+
         if ($user->isEmployer()) {
             $employer = $user->aboutEmployer()->get()[0];
             $projects = $user->projects()->get()->all();
@@ -26,6 +30,7 @@ class AccountController extends Controller
 
             return Inertia::render('Auth/Account/Employer',[
                 'info'=> $data,
+                'gallery'=>$gallery,
                 'title'=> "Account"
             ]);
         }
@@ -37,12 +42,12 @@ class AccountController extends Controller
         $projects = [];
         $data = [];
 
-
         $data['info'] = $info?  $info->toArray(): null ;
 
 
         return Inertia::render('Auth/Account/Activist',[
             'info'=>$data,
+            'gallery'=>$gallery,
             'title'=>"Account"            
         ]);
 
@@ -119,10 +124,35 @@ class AccountController extends Controller
     public function viewGallery(Request $request){
 
         $user = Auth::user();
-
+        dd([1,2,3]);
         dd($request->user()->email);
     }
 
+    public function updateGallery(Request $request)     
+    {
+        $user = Auth::user();
+        if($request->hasFile('images')){
+            $title = $request->title;
+            $images = $request->images;
+            foreach ($images as $image) {
+                $file = $image;
+                $filename = $file->getClientOriginalName();
+                $file->storeAs('/'.$request->user()->id.'/', $filename, 'public_gallery');
+            
+            }
+            
+            $gallery_photo = Image::create([
+              'title'=>$filename,
+              'filename' => $filename,
+              'order' => 0,
+              'user_id' => $user->id,
+            ]);
+    
+            $gallery_photo->save();
+            
+          }
+    }
+    
     public function uploadToGallery(Request $request)
     {
       if($request->hasFile('gallery_photo')){
@@ -142,5 +172,5 @@ class AccountController extends Controller
         $gallery_photo->save();
         
       }
-    }
+    }    
 }

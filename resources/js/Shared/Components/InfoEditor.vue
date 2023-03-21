@@ -12,7 +12,7 @@
                 </div>
                 <div v-else>
                     <div style="white-space: pre-line;">
-                        {{ value}}
+                        {{ value }}
                     </div>
                 </div>
             </transition>
@@ -43,10 +43,10 @@ import { useForm } from '@inertiajs/inertia-vue3'
             singleMode: Boolean,
             userData: Boolean,
             showLabel: Boolean,
+            submitData: Boolean,
         },
+        emits: ['update:value'],
         setup(props) {
-            
-
             if (props.showLabel == null){
                 props.showLabel = false
             }
@@ -59,9 +59,7 @@ import { useForm } from '@inertiajs/inertia-vue3'
                 case "text":
                 editingField = "textarea"
                     break
-
             }
-
             const form = useForm({
                 title: props.title,
                 value: props.value,
@@ -74,8 +72,10 @@ import { useForm } from '@inertiajs/inertia-vue3'
         },
         data(props){
             return({
+                
                 editing: false,
                 modifing: false,
+                
             })
         },
 
@@ -88,7 +88,11 @@ import { useForm } from '@inertiajs/inertia-vue3'
                 this.modifing = true
             },
             updateData(){
-                this.form.post(this.url)
+                
+                this.$emit('update:value', this.form.value)
+                if(this.submitData){
+                    this.form.post(this.url)
+                }
                 console.log(this.form)
                 this.toggleEditing()
             }

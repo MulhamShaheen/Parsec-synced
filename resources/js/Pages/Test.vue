@@ -2,52 +2,91 @@
 	<Head>
     	<title>{{ $page.props.title }} - My awesome app</title>
   	</Head>
-	<form  @submit.prevent="send()">
-		<input class="h-10" type="file" @input="fileUpload($event.target.files[0]) ">
-		<button v-on:click="send">click</button>
+
+	<form @submit.prevent="send()">
+		<input class="h-10" type="file" multiple name="image" @input="fileAdd($event.target.files)">
 	</form>
-	<div v-for="image in images">
-		<img :src="image['url']" width="125" >
-		<h1> 1 {{image['name']}}</h1>
-	</div>
+	<draggable 
+		v-model="images" 
+		group="people" 
+		@start="drag=true" 
+		@end="drag=false" 
+		item-key="id">
+		<template class="flex" #item="{element}">
+			<div class="image-model-container">
+				<img class="image" :src="element.url" width="125" >
+			</div>
+		</template>
+	</draggable>
+	<button v-on:click="send" >upload</button>
 </template>
 <script>
     import {
-        Head
+        Head	
     } from '@inertiajs/inertia-vue3'
 	import { useForm } from '@inertiajs/inertia-vue3';
-	import appCSS from '/css/unlock-main.css';
+	import InfoEditor from '../Shared/Components/InfoEditor';
+	import draggable from 'vuedraggable'
+	import { TransitionGroup } from 'vue';
 
     export default {
         components: {
-            Head
+            Head,
+			InfoEditor,
+			draggable
         },
         layout: null,
 		setup(preps){
 			const form = useForm({
-				images: null
+				images: [],
+				info: [],
 			})
 			return {form}
 		},
 		data(){
 			return{
 				url: null,
-				images: []
+				images: [],
+				drag: false,
 			}
 		},
 		methods:{
 			send(){
-				this.form.images = this.images
+				// route('gallery.update', {
+				// 	_method: 'post',
+				// 	images: this.form.images,});
+
+				this.form.post(route('gallery.update'))
 				console.log(this.form.images)
 			},
-			fileUpload(image){
-				console.log(image)
-				image['url'] = URL.createObjectURL(image);
-				this.images.push(image)
+			fileAdd(images){
+				console.log(images)
+				images.forEach(image => {
+					image.title = image.name
+					this.form.images.push(image)
+					image['url'] = URL.createObjectURL(image);
+					this.images.push(image)
 
-
+				});
+				
 			}
 		}
     }
 
 </script>
+<style scoped>
+.image-model-container{
+	display: flex;
+	gap: 8px;
+	box-sizing: border-box;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e5e7eb;
+	min-width: 240px;
+	height: 120px;
+	border-radius: 10px;
+}
+.image{
+	border-radius: 10px;
+}
+</style>

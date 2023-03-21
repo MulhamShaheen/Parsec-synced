@@ -61,6 +61,8 @@ Route::get('/account/edit', [AccountController::class, 'accountEdit'])->name('ac
 // Route::post('/account/edit', [AccountController::class, 'accountEdit'])->name('account.edit');
 Route::post('/account/update', [AccountController::class, 'handleEditRequest'])->name('account.update');
 Route::get('/account/gallery', [AccountController::class, 'viewGallery'])->name('account.gallery');
+Route::post('/account/gallery', [AccountController::class, 'updateGallery'])->name('gallery.update');
+
 
 
 Route::get('/account/project', [AccountController::class, 'viewProjects'])->name('account.projects');

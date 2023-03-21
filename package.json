@@ -26,6 +26,7 @@
         "@inertiajs/progress": "^0.2.7",
         "@protonemedia/inertia-vue-modal-poc": "^0.0.1",
         "vue": "^3.2.36",
+        "vuedraggable": "^4.1.0",
         "webpack": "^5.75.0"
     }
 }
