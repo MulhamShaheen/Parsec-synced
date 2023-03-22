@@ -36,9 +36,14 @@ class AccountController extends Controller
         }
 
         $info = $user->info()->get()[0];
+        $achievements = $user->achievements()->get()->all();
+        
+        for ($i=0; $i < sizeof($achievements); $i++) { 
+            $achievements[$i] = $achievements[$i]->achievementable(); 
+        }
+
         $major = null;
         $faculty = null;
-        $resume = null;
         $projects = [];
         $data = [];
 
@@ -46,8 +51,9 @@ class AccountController extends Controller
 
 
         return Inertia::render('Auth/Account/Activist',[
-            'info'=>$data,
-            'gallery'=>$gallery,
+            'info'=> $data,
+            'gallery'=> $gallery,
+            'achievements'=> $achievements,
             'title'=>"Account"            
         ]);
 

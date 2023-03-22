@@ -119,4 +119,8 @@ class User extends Authenticatable
     public function gallery(){
         return $this->hasMany(Image::class);
     }
+
+    public function achievements(){
+        return $this->hasMany(Achievement::class);
+    }
 }
