@@ -13,11 +13,14 @@
         </div>
         <div class="w-3/4 m-4 p-2">
           <div class="flex content-between">
-            <button class="rounded p-2" :class="[form.processing || repliedTo !== false? 'bg-gray-200 ' : 'bg-indigo-600 text-white'] " :disabled="form.processing || repliedTo !== false" data-modal-toggle="reply-model">
+            <button class="rounded p-2" 
+            :class="[form.processing || repliedTo? 'bg-gray-200 ' : 'bg-indigo-600 text-white'] "
+            :disabled="form.processing || repliedTo" data-modal-toggle="reply-model">
               Откликнуться
             </button>
           </div>
         </div>
+        
         <MyModal :modalId="'reply-model'" :modal-text="''" :modal-title="'Отклик на проект'">
           <div class="p-6 space-y-6">
             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -56,23 +59,20 @@
         </div>
       </div>
     </div>
-
   </div>
-  <!--  <div>-->
-  <!--    {{ project }}-->
-  <!--  </div>-->
 </template>
 
 <script>
 import {useForm} from '@inertiajs/inertia-vue3'
-
 export default {
   name: "View",
+  components:{
+  },
   props: {
     auth: Object,
     project: Object,
     employer: Object,
-    repliedTo: Object,
+    repliedTo: Boolean,
   },
   setup(props) {
     const form = useForm({

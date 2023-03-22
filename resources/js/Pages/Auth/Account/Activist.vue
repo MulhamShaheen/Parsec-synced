@@ -30,8 +30,8 @@
         </div>
       </div>
       <div class="about-us-area">
-          <p class="area-heading">О нас</p>
-          <p class="description">{{  }}</p>
+          <p class="area-heading">О себе</p>
+          <p class="description">{{ info.info.description }}</p>
       </div>
       <div class="photo-gallery-area">
           
